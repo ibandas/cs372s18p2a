@@ -5,7 +5,7 @@ package edu.luc.cs.laufer.cs372.shapes
 object boundingBox {
   def apply(s: Shape): Location = s match {
     case Rectangle(x, y) => Location(0, 0, s)
-    case Ellipse(m, n)   => Location(0 - m, 0 - n, Rectangle(2 * m, 2 * n))
+    case Ellipse(m, n)   => Location(0 + m, 0 + n, Rectangle(2 * m, 2 * n))
     case Group(shapes @ _*) => {
       val boxes = shapes.map(s => apply(s))
       val minX = boxes.map(p => p.x).min
@@ -27,7 +27,6 @@ object boundingBox {
     case Rectangle(x, y) => Rectangle(x * factor, y * factor)
     case Location(x, y, s) => {
       val shape = scale(s, factor)
-
       Location(x * factor, y * factor, shape)
     }
     case Group(shapes @ _*) => {
