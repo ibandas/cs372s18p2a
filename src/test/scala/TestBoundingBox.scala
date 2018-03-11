@@ -69,8 +69,8 @@ class TestBoundingBox extends FunSuite {
   //Height
   testHeight("simple ellipse height", simpleEllipse, 1)
   testHeight("simple rectangle height", simpleRectangle, 1)
-  testHeight("simple location height", simpleLocation, 2)
+  testHeight("simple location height", simpleLocation, 1)
   testHeight("basic group height", basicGroup, 2)
-  testHeight("simple group height", simpleGroup, 3)
-  testHeight("complex group height", complexGroup, 6)
+  testHeight("simple group height", simpleGroup, 2)
+  testHeight("complex group height", complexGroup, 5)
 }

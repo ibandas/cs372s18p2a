@@ -7,7 +7,7 @@ object boundingBox {
     case Rectangle(x, y) => Location(0, 0, s)
     case Ellipse(m, n)   => Location(0 - m, 0 - n, Rectangle(2 * m, 2 * n))
     case Group(shapes @ _*) => {
-      val boxes = shapes.map(s => boundingBox(s))
+      val boxes = shapes.map(s => apply(s))
       val minX = boxes.map(p => p.x).min
       val maxX = boxes.map(p => p.x + p.shape.asInstanceOf[Rectangle].width).max
       val minY = boxes.map(p => p.y).min
@@ -16,7 +16,7 @@ object boundingBox {
       Location(minX, minY, Rectangle(maxX - minX, maxY - minY))
     }
     case Location(x, y, s) => {
-      val box = boundingBox(s)
+      val box = apply(s)
       Location(x + box.x, y + box.y, box.shape)
     }
   }
